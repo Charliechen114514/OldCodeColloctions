@@ -1,0 +1,43 @@
+C51 COMPILER V9.60.7.0   GUI                                                               10/09/2023 21:48:16 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE GUI
+OBJECT MODULE PLACED IN .\Objects\GUI.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE GUI.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\GUI.lst
+                    -) OBJECT(.\Objects\GUI.obj)
+
+line level    source
+
+   1          #include "GUI.h"
+   2          
+   3          void ShowCurSituation(struct Player* player, struct Obtacle* obtacle,unsigned int speed)
+   4          {
+   5   1              unsigned int i;
+   6   1              i = 0;
+   7   1              while(i++ < speed)
+   8   1              {
+   9   2                      ShowPlayerPos(player);
+  10   2                      Delay10mus(40);
+  11   2                      ShowObtacle(obtacle);
+  12   2                      Delay10mus(40);
+  13   2              }
+  14   1      }
+  15          
+  16          void ShowGameSpeed(unsigned int* pSpeed)
+  17          {
+  18   1              ShowNum(MAX_DIGITS_VALUE_SHOW, *pSpeed);
+  19   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     76    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

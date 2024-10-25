@@ -1,0 +1,4 @@
+/home/charliechen114514/LocalGitProject/C++/Cmake/trySelf/build/CMakeFiles/myMath.dir
+/home/charliechen114514/LocalGitProject/C++/Cmake/trySelf/build/CMakeFiles/myMathLib.dir
+/home/charliechen114514/LocalGitProject/C++/Cmake/trySelf/build/CMakeFiles/edit_cache.dir
+/home/charliechen114514/LocalGitProject/C++/Cmake/trySelf/build/CMakeFiles/rebuild_cache.dir

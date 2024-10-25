@@ -1,0 +1,4 @@
+/home/charliechen114514/LocalGitProject/CodesExperiments/tcp_ip-easy/SC1/build/CMakeFiles/client.dir
+/home/charliechen114514/LocalGitProject/CodesExperiments/tcp_ip-easy/SC1/build/CMakeFiles/server.dir
+/home/charliechen114514/LocalGitProject/CodesExperiments/tcp_ip-easy/SC1/build/CMakeFiles/edit_cache.dir
+/home/charliechen114514/LocalGitProject/CodesExperiments/tcp_ip-easy/SC1/build/CMakeFiles/rebuild_cache.dir

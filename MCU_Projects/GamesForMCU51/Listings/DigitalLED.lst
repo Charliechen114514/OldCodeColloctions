@@ -1,0 +1,64 @@
+C51 COMPILER V9.60.7.0   DIGITALLED                                                        10/09/2023 21:48:16 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE DIGITALLED
+OBJECT MODULE PLACED IN .\Objects\DigitalLED.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE DigitalLED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -DigitalLED.lst) OBJECT(.\Objects\DigitalLED.obj)
+
+line level    source
+
+   1          #include "DigitalLED.h"
+   2          
+   3          unsigned char Digits[10] = {
+   4                  0x3f,0x06,0x5b,0x4f,
+   5                  0x66,0x6d,0x7d,0x07,
+   6                  0x7f,0x6f}; // From 0 To 9
+   7          
+   8          // Same as the Array Index Counter, count the first Position as the Index 0
+   9          #define GetLocation(location) (0x03 - location) 
+  10          
+  11          void ShowDigit(Location location, DigitNum digits)
+  12          {
+  13   1              unsigned char loc = GetLocation(location);
+  14   1              P2_4 = GET_BIT(loc, 2);
+  15   1              P2_3 = GET_BIT(loc, 1);
+  16   1              P2_2 = GET_BIT(loc, 0);
+  17   1              
+  18   1              P0 = Digits[digits];
+  19   1              
+  20   1              Delay10mus(10);
+  21   1              P0 = 0;
+  22   1      }
+  23          
+  24          void ShowNum(Location maxPos, unsigned int num)
+  25          {
+  26   1              unsigned char cnt;
+  27   1              unsigned int copy;
+  28   1              copy = num;
+  29   1              cnt = 0;
+  30   1              while(copy != 0)
+  31   1              {
+  32   2                      ShowDigit(maxPos - cnt, copy%10);
+  33   2                      copy /= 10;
+  34   2                      cnt++;
+  35   2              }
+  36   1      }
+  37          
+  38          void ShowVoid(){
+  39   1              P0 = 0;
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    109    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

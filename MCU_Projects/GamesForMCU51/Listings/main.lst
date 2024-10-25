@@ -1,0 +1,170 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              10/09/2023 21:48:15 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Utilitys.h"
+   3          #include "obtacle.h"
+   4          #include "player.h"
+   5          #include "GUI.h"
+   6          #include "stdlib.h"
+   7          #include "beep.h"
+   8          #include "defaultAct.h"
+   9          #include "KeyEvent.h"
+  10          #include "DigitalLED.h"
+  11          #include "UART.h"
+  12          #include "MatKey.h"
+  13          struct Obtacle obtacle1;
+  14          struct Obtacle obtacle2;
+  15          static struct Player player;
+  16          static DeadTime cacheOfDeath;
+  17          void UART_GetInstruction() interrupt 4
+  18          {
+  19   1              if(RI == 1)
+  20   1              {
+  21   2                      RI = 0;
+  22   2                      UART_OperatePlayer(&player, SBUF);
+  23   2              }
+  24   1      }
+  25          
+  26          void main()
+  27          {
+  28   1              // For Begin
+  29   1      
+  30   1              Score getscore;
+  31   1              DeadTime deadTime;
+  32   1              unsigned char begin_ob;
+  33   1              unsigned char enable_deadTime;
+  34   1              unsigned int speed;
+  35   1              unsigned char difficulty;
+  36   1              unsigned char isPulse;
+  37   1              PressedKey pressedKey;
+  38   1              MenuChoice choice;
+  39   1              pressedKey = KeyUnPressed;
+  40   1              choice = Unknown;
+  41   1              enable_deadTime = END_GAME_MAX_ALLOWED_DEAD_TIME;
+  42   1              difficulty = DEF_DIF;
+  43   1              begin_ob = rand()%0xFF;
+  44   1              speed = SPEED;
+  45   1              DEBUG_Init;
+  46   1              MatrixLED_Init();
+  47   1              InitUART();
+  48   1              PLAYER_INIT;
+  49   1              OBTACLE_POS_INIT;
+  50   1              SetObtacle(&obtacle1, begin_ob);
+  51   1              
+  52   1              // Begin Select
+  53   1              while(choice == Unknown)
+  54   1              {
+C51 COMPILER V9.60.7.0   MAIN                                                              10/09/2023 21:48:15 PAGE 2   
+
+  55   2                      pressedKey = KeyScanner(KeyCheckedOn, KeySingleDetected);
+  56   2                      choice = KeyEvent_GameMenuSelect(pressedKey);
+  57   2                      switch(choice)
+  58   2                      {       
+  59   3                              case Continue:
+  60   3                                      goto CONTINUE_GAME;
+  61   3                              case BackToMainMenu:
+  62   3      CLEARVOID:
+  63   3                                      ShowVoid();
+  64   3                                      choice = Unknown;
+  65   3                                      break;
+  66   3                              case MODIFY_SPEED:
+  67   3                                      choice = Unknown;
+  68   3                                      if(SelectSpeed(&speed, &pressedKey) == QUIT)
+  69   3                                              goto CLEARVOID;  
+  70   3                                      break;
+  71   3                              case MODIFY_DIFFICULTY:
+  72   3                                      choice = Unknown;
+  73   3                                      if(SelectDifficulty(&difficulty, &pressedKey) == QUIT)
+  74   3                                              goto CLEARVOID;
+  75   3                                      enable_deadTime = difficulty;
+  76   3                                      break;
+  77   3                              default:
+  78   3                                      break;
+  79   3                      }
+  80   2              }
+  81   1              
+  82   1              while(1)
+  83   1              {
+  84   2      CONTINUE_GAME:
+  85   2                      pressedKey = KeyScanner(KeyCheckedOn, KeySingleDetected);
+  86   2                      KeyEventReactor(&player, pressedKey);
+  87   2                      ShowCurSituation(&player, &obtacle1, speed);
+  88   2                      RunObtacle(&obtacle1);
+  89   2                      AfterEffect(&player, &obtacle1, &getscore, &deadTime);
+  90   2                      DEBUG(player.posX);
+  91   2                      isPulse = CheckPulse();
+  92   2                      if(isPulse)
+  93   2                      {
+  94   3                              BeepWTF;
+  95   3                              isPulse = 0;
+  96   3                              Delay1ms(100);
+  97   3                              while(!isPulse)
+  98   3                              {
+  99   4                                      isPulse = CheckPulse();
+ 100   4                              }
+ 101   3                      }
+ 102   2                      if(deadTime >= enable_deadTime)
+ 103   2                      {
+ 104   3                              srand(0);
+ 105   3                              cacheOfDeath += deadTime;
+ 106   3                              choice = Unknown;
+ 107   3                              BeepFin();  
+ 108   3                              while(choice == Unknown)
+ 109   3                              {
+ 110   4                                      ShowNum(MAX_DIGITS_SCORE_SHOW, getscore);
+ 111   4                                      ShowNum(MAX_DIGITS_DEAD_SHOW , cacheOfDeath);
+ 112   4                                      pressedKey = KeyScanner(KeyCheckedOn, KeySingleDetected);
+ 113   4                                      choice = KeyEvent_GameMenuSelect(pressedKey);
+ 114   4                                      switch(choice)
+ 115   4                                      {
+ 116   5                                              case Continue:
+C51 COMPILER V9.60.7.0   MAIN                                                              10/09/2023 21:48:15 PAGE 3   
+
+ 117   5                                                      deadTime = 0;
+ 118   5                                                      choice = Unknown;
+ 119   5                                                      goto CONTINUE_GAME;
+ 120   5                                              case BackToMainMenu:
+ 121   5      CLEARVOID2:
+ 122   5                                                      ShowVoid();
+ 123   5                                                      choice = Unknown;
+ 124   5                                                      break;
+ 125   5                                              case MODIFY_SPEED:
+ 126   5                                                      choice = Unknown;
+ 127   5                                                      if(SelectSpeed(&speed, &pressedKey) == QUIT)
+ 128   5                                                              goto CLEARVOID2;  
+ 129   5                                                      break;
+ 130   5                                              case MODIFY_DIFFICULTY:
+ 131   5                                                      choice = Unknown;
+ 132   5                                                      if(SelectDifficulty(&difficulty, &pressedKey) == QUIT)
+ 133   5                                                              goto CLEARVOID2;
+ 134   5                                                      enable_deadTime = difficulty;
+ 135   5                                                      break;
+ 136   5                                              default:
+ 137   5                                                      break;
+ 138   5                                      }
+ 139   4                              }
+ 140   3                      }
+ 141   2              }
+ 142   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    494    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8      11
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

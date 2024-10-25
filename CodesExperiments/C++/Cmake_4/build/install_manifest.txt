@@ -1,0 +1,10 @@
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/lib/libMyProduct_AndFactory_staticLib.a
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/bin/libMyProduct_AndFactory_sharedLib.so
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/bin/libMyProduct_AndFactory_moduleLib.so
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/include/AbsrtactProduct.h
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/include/AbstractFactory.h
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/include/FactoriesAndProducts.h
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/include/ProductA.h
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/include/ProductA_Factory.h
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/include/ProductB.h
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_4/build/../install/include/ProductB_Factory.h

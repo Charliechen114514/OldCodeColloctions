@@ -1,0 +1,93 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              08/01/2023 10:32:00 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "MatrixLED.h"
+   3          #include "Delay.h"
+   4          #iniclude "Key.h"
+*** WARNING C315 IN LINE 4 OF main.c: unknown #directive 'iniclude'
+   5          
+   6          #define SLOWSPEED 10
+   7          #define MEDIUMSPEED 5
+   8          #define FASTSPEED 3
+   9          #define FUCKING_FASTSPEED 2
+  10          #define SLOW 1
+  11          #define MEDIUM 2
+  12          #define FAST 3
+  13          #define FUCKING_FAST 4
+  14          #define DEFCONF MEDIUM
+  15          
+  16          unsigned char Ani[] = {
+  17          0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  18          0xFF,0x08,0x08,0x08,0xFF,0x00,0x0E,0x15,
+  19          0x15,0x15,0x08,0x00,0xFE,0x01,0x02,0x00,
+  20          0xFE,0x01,0x02,0x00,0x0E,0x11,0x11,0x11,
+  21          0x0E,0x00,0x00,0xFD,0x00,0x00,0x00,0x00
+  22          };
+  23          
+  24          static unsigned char speed = MEDIUMSPEED;
+  25          
+  26          unsigned char fetchSpeed()
+  27          {
+  28   1              unsigned char keyNum;
+  29   1              keyNum = Key();
+*** WARNING C206 IN LINE 29 OF main.c: 'Key': missing function-prototype
+  30   1              switch(keyNum)
+  31   1              {
+  32   2                      case SLOW:
+  33   2                              return SLOWSPEED;
+  34   2                      case MEDIUM:
+  35   2                              return MEDIUMSPEED;
+  36   2                      case FAST:
+  37   2                              return FASTSPEED;
+  38   2                      case FUCKING_FAST:
+  39   2                              return FUCKING_FASTSPEED;
+  40   2                      default:
+  41   2                              return speed;
+  42   2              }
+  43   1      }
+  44          
+  45          void main()
+  46          {
+  47   1              
+  48   1              unsigned char i = 0;
+  49   1              unsigned char offset = 3;
+  50   1              unsigned char count = 0;
+  51   1              MatrixLED_Init();
+  52   1              while(1)
+C51 COMPILER V9.60.7.0   MAIN                                                              08/01/2023 10:32:00 PAGE 2   
+
+  53   1              {
+  54   2                      speed = fetchSpeed();
+  55   2                      for(i = 0;i < 8; i++)
+  56   2                      {
+  57   3                              MatrixLED_ShowColomn(i, Ani[i + offset]);
+  58   3                      }
+  59   2                      if(count++ > speed){
+  60   3                              count = 0;
+  61   3                              offset++;
+  62   3                              offset %= 32;
+  63   3                      }
+  64   2              }
+  65   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     97    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     41       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

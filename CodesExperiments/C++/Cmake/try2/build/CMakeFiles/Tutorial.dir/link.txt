@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Tutorial.dir/Tutorials.cpp.o -o Tutorial  libPrintLibs.a 

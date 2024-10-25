@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared  -o libMyProduct_AndFactory_moduleLib.so CMakeFiles/MyProduct_AndFactory_moduleLib.dir/src/ProductA.cpp.o CMakeFiles/MyProduct_AndFactory_moduleLib.dir/src/ProductA_Factory.cpp.o CMakeFiles/MyProduct_AndFactory_moduleLib.dir/src/ProductB.cpp.o CMakeFiles/MyProduct_AndFactory_moduleLib.dir/src/ProductB_Factory.cpp.o 

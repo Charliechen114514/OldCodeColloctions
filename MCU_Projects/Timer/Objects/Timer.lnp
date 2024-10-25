@@ -1,0 +1,9 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\lcd1602.obj",
+".\Objects\Timer0.obj",
+".\Objects\Key.obj",
+".\Objects\Delay.obj",
+".\Objects\showTime.obj" 
+TO ".\Objects\Timer" 
+PRINT(".\Listings\Timer.m51")

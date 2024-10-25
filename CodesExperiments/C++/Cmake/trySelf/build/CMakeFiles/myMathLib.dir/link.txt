@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmyMathLib.a CMakeFiles/myMathLib.dir/src/add.cpp.o CMakeFiles/myMathLib.dir/src/minus.cpp.o CMakeFiles/myMathLib.dir/src/multipyDivision.cpp.o
+/usr/bin/ranlib libmyMathLib.a

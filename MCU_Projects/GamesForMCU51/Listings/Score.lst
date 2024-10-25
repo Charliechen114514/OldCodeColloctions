@@ -1,0 +1,31 @@
+C51 COMPILER V9.60.7.0   SCORE                                                             10/09/2023 19:05:39 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SCORE
+OBJECT MODULE PLACED IN .\Objects\Score.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE Score.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Score
+                    -.lst) OBJECT(.\Objects\Score.obj)
+
+line level    source
+
+   1          #include "Score.h"
+   2          
+   3          DigitNum GetLastRightDigits(unsigned int score)
+   4          {
+   5   1              return (DigitNum)score % 10;
+   6   1      }
+   7          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      8    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

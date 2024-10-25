@@ -1,0 +1,114 @@
+C51 COMPILER V9.60.7.0   DEFAULTACT                                                        10/09/2023 21:48:16 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE DEFAULTACT
+OBJECT MODULE PLACED IN .\Objects\defaultAct.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE defaultAct.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -defaultAct.lst) OBJECT(.\Objects\defaultAct.obj)
+
+line level    source
+
+   1          #include "defaultAct.h" 
+   2          unsigned int SPEEDTAB[MAX_SELECTABLE] = {FOR_UCPT, SLOW, MEDIUM, FAST, Hyper, WTF};
+   3          
+   4          void PassProcess(struct Player* player, Score* score)
+   5          {
+   6   1              BeepHigh;
+   7   1              (*score) += player->posX;
+   8   1      }
+   9          
+  10          void NotPassProcess(DeadTime* deadTime)
+  11          {
+  12   1              BeepLow;
+  13   1              (*deadTime)++;
+  14   1      }
+  15          
+  16          void AfterEffect(struct Player* player, struct Obtacle* obtacle,Score* score, DeadTime* deadTime)
+  17          {
+  18   1              if(player->posX != obtacle->column)
+  19   1              {
+  20   2                      return;
+  21   2              }
+  22   1              if(JUDGE_IS_DEAD(player->posY, obtacle->obtacleByte))
+  23   1              {
+  24   2                      NotPassProcess(deadTime);
+  25   2              }
+  26   1              else
+  27   1              {
+  28   2                      PassProcess(player, score);
+  29   2              }
+  30   1      }
+  31          
+  32          unsigned char SelectSpeed(unsigned int* speed, PressedKey* pPressedkey)
+  33          {
+  34   1              char curChoice;
+  35   1              PressedKey pressedKey ;
+  36   1              pressedKey = *pPressedkey;
+  37   1              while(pressedKey != Key1Pressed)
+  38   1              {
+  39   2                      ShowNum(3, *speed);
+  40   2                      pressedKey = KeyScanner(KeyCheckedOn, KeySingleDetected);
+  41   2                      switch(pressedKey)
+  42   2                      {
+  43   3                              case Key3Pressed:
+  44   3                                      while(IsKeyPressed(Key3));
+  45   3                                      curChoice++; curChoice%= MAX_SELECTABLE;BeepHigh;break;
+  46   3                              case Key4Pressed:
+  47   3                                      while(IsKeyPressed(Key4));
+  48   3                                      if(--curChoice < 0){curChoice = 0;}BeepHigh;break;
+  49   3                              case Key2Pressed:
+  50   3                                      while(IsKeyPressed(Key2));
+  51   3                                      return QUIT;
+  52   3                              default:
+  53   3                                      break;
+  54   3                      }
+C51 COMPILER V9.60.7.0   DEFAULTACT                                                        10/09/2023 21:48:16 PAGE 2   
+
+  55   2                      *speed = SPEEDTAB[curChoice];
+  56   2              }
+  57   1              *pPressedkey = KeyUnPressed;
+  58   1              return MODIFY;
+  59   1      }
+  60          
+  61          unsigned char SelectDifficulty(unsigned char* difficulty, PressedKey* pPressedkey)
+  62          {
+  63   1              PressedKey pressedKey ;
+  64   1              pressedKey = *pPressedkey;
+  65   1              while(pressedKey != Key1Pressed)
+  66   1              {
+  67   2                      ShowNum(3, *difficulty);
+  68   2                      pressedKey = KeyScanner(KeyCheckedOn, KeySingleDetected);
+  69   2                      switch(pressedKey)
+  70   2                      {
+  71   3                              case Key3Pressed:
+  72   3                                      while(IsKeyPressed(Key3));
+  73   3                                      (*difficulty) %= DIF_EASY;(*difficulty)++;BeepHigh;break;
+  74   3                              case Key4Pressed:
+  75   3                                      while(IsKeyPressed(Key4));
+  76   3                                      if(--(*difficulty) <= 0){*difficulty = 1;}
+  77   3                                      BeepHigh;break;
+  78   3                              case Key2Pressed:
+  79   3                                      while(IsKeyPressed(Key2));
+  80   3                                      return QUIT;
+  81   3                              default:
+  82   3                                      break;
+  83   3                      }
+  84   2                      
+  85   2              }
+  86   1              *pPressedkey = KeyUnPressed;
+  87   1              return MODIFY;
+  88   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    461    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12      36
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

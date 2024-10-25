@@ -1,0 +1,17 @@
+".\Objects\STARTUP.obj",
+".\Objects\LEDMat.obj",
+".\Objects\delay.obj",
+".\Objects\main.obj",
+".\Objects\obtacle.obj",
+".\Objects\key.obj",
+".\Objects\KeyEvent.obj",
+".\Objects\Player.obj",
+".\Objects\GUI.obj",
+".\Objects\DigitalLED.obj",
+".\Objects\lcd1602.obj",
+".\Objects\Beep.obj",
+".\Objects\defaultAct.obj",
+".\Objects\UART.obj",
+".\Objects\MatKey.obj" 
+TO ".\Objects\2" 
+PRINT(".\Listings\2.m51") RAMSIZE(256) 

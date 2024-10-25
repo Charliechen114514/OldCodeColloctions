@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/exe.dir/src/ProductA.cpp.o CMakeFiles/exe.dir/src/ProductA_Factory.cpp.o CMakeFiles/exe.dir/src/ProductB.cpp.o CMakeFiles/exe.dir/src/ProductB_Factory.cpp.o CMakeFiles/exe.dir/src/main.cpp.o -o exe 

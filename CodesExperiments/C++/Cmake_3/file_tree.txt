@@ -1,0 +1,19 @@
+.
+├── AbsrtactProduct.h
+├── AbstractFactory.h
+├── build
+├── CMakeLists.txt
+├── FactoriesAndProducts.h
+├── file_tree.txt
+├── ProductA_Factory.h
+├── ProductA.h
+├── ProductB_Factory.h
+├── ProductB.h
+└── src
+    ├── main.cpp
+    ├── ProductA.cpp
+    ├── ProductA_Factory.cpp
+    ├── ProductB.cpp
+    └── ProductB_Factory.cpp
+
+2 directories, 14 files

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-g++"
+	BuildStamp="20240104-1428-Experimental"
+	Name="charliechen114514-virtual-machine"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="charliechen114514-virtual-machine"
+	OSRelease="6.2.0-39-generic"
+	OSVersion="#40~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Nov 16 10:53:04 UTC 2"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="25"
+	ModelID="80"
+	ProcessorCacheSize="512"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="9663"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="3193.89"
+	>
+	<Testing>
+		<StartDateTime>Jan 04 22:28 CST</StartDateTime>
+		<StartTestTime>1704378506</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jan 04 22:28 CST</EndDateTime>
+		<EndTestTime>1704378506</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

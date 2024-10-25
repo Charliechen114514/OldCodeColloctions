@@ -1,0 +1,56 @@
+C51 COMPILER V9.60.7.0   OBTACLE                                                           10/09/2023 21:48:15 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE OBTACLE
+OBJECT MODULE PLACED IN .\Objects\obtacle.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE obtacle.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\obt
+                    -acle.lst) OBJECT(.\Objects\obtacle.obj)
+
+line level    source
+
+   1          #include "obtacle.h"
+   2          #include "stdlib.h"
+   3          
+   4          //void GeneralObtacleInit(struct Obtacle* obtacle)
+   5          //{
+   6          //      obtacle->column = LED_MAX_COL;
+   7          //      obtacle->obtacleByte = 0;
+   8          //}
+   9          
+  10          void ShowObtacle(struct Obtacle* pObt)
+  11          {
+  12   1              MatrixLEDWriteColumnly(pObt->obtacleByte,pObt->column);
+  13   1      }
+  14          
+  15          void SetObtacle(struct Obtacle* pObt, unsigned char obt)
+  16          {
+  17   1              pObt->obtacleByte = obt;
+  18   1      }       
+  19          
+  20          void RunObtacle(struct Obtacle* pObt)
+  21          {
+  22   1              unsigned char res;
+  23   1              if(pObt -> column <= LED_MIN_COL) // Deal OverFlow
+  24   1              {
+  25   2                      res = rand() % 0xFF;
+  26   2                      SetObtacle(pObt, res);
+  27   2                      pObt -> column = LED_MAX_COL;
+  28   2              }
+  29   1              
+  30   1              (pObt -> column)--; // Left Move 
+  31   1              
+  32   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

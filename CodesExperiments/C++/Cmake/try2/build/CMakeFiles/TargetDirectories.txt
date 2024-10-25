@@ -1,0 +1,4 @@
+/home/charliechen114514/LocalGitProject/C++/Cmake/try2/build/CMakeFiles/PrintLibs.dir
+/home/charliechen114514/LocalGitProject/C++/Cmake/try2/build/CMakeFiles/Tutorial.dir
+/home/charliechen114514/LocalGitProject/C++/Cmake/try2/build/CMakeFiles/edit_cache.dir
+/home/charliechen114514/LocalGitProject/C++/Cmake/try2/build/CMakeFiles/rebuild_cache.dir

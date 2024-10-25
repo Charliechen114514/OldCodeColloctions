@@ -1,0 +1,6 @@
+// this is defined to show the version
+#include <iostream>
+#define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define PROJECT_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define ShowVersion   std::cout << PROJECT_VERSION_MAJOR <<"." \
+                        << PROJECT_VERSION_MINOR << std::endl;

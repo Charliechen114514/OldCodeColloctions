@@ -1,0 +1,3 @@
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_2/build/CMakeFiles/exe.dir
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_2/build/CMakeFiles/edit_cache.dir
+/home/charliechen114514/LocalGitProject/CodesExperiments/C++/Cmake_2/build/CMakeFiles/rebuild_cache.dir
